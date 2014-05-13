@@ -75,6 +75,24 @@
                     </n98_apilogger>
                 </observers>
             </controller_action_postdispatch_api_v2_soap_index>
+
+            <!-- XMLRPC -->
+            <controller_action_predispatch_api_xmlrpc_index>
+                <observers>
+                    <n98_apilogger>
+                        <class>n98_apilogger/observer</class>
+                        <method>controllerActionPredispatchApiXmlrpcIndex</method>
+                    </n98_apilogger>
+                </observers>
+            </controller_action_predispatch_api_xmlrpc_index>
+            <controller_action_postdispatch_api_v2_soap_index>
+                <observers>
+                    <n98_apilogger>
+                        <class>n98_apilogger/observer</class>
+                        <method>controllerActionPostdispatchApiXmlrpcIndex</method>
+                    </n98_apilogger>
+                </observers>
+            </controller_action_postdispatch_api_v2_soap_index>
         </events>
         <translate>
             <modules>

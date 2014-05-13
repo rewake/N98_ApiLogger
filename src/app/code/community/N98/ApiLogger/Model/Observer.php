@@ -54,6 +54,36 @@ class N98_ApiLogger_Model_Observer
         );
     }
 
+	/**
+	 * TODO:
+	 * @param Varien_Event_Observer $observer
+	 */
+	public function controllerActionPredispatchApiXmlrpcIndex(Varien_Event_Observer $observer)
+	{
+//        if (!Mage::getSingleton('n98_apilogger/config')->isSoapLogActive()) {
+//            return;
+//        }
+
+//        if (!$this->_shouldLogWsdlRequest($observer)) {
+//            return;
+//        }
+
+		Mage::log("pre yeppers", null, 'oi_api.log');
+
+		$request = $observer->getControllerAction()->getRequest();
+		/* @var $request Mage_Core_Controller_Request_Http */
+		Mage::helper('n98_apilogger')->log(
+			array(
+				'body'             => $request->getRawBody(),
+				'direction'        => N98_ApiLogger_Model_Log::DIRECTION_IN,
+				'api_adapter'      => 'xmlrpc',
+				'http_status_code' => null,
+				'http_method'      => $request->getMethod(),
+			)
+		);
+	}
+
+
     /**
      * @param Varien_Event_Observer $observer
      */
@@ -105,6 +135,35 @@ class N98_ApiLogger_Model_Observer
             )
         );
     }
+
+	/**
+	 * TODO:
+	 * @param Varien_Event_Observer $observer
+	 */
+	public function controllerActionPostdispatchApiXmlrpcIndex(Varien_Event_Observer $observer)
+	{
+//		if (!Mage::getSingleton('n98_apilogger/config')->isSoapV2LogActive()) {
+//			return;
+//		}
+
+//		if (!$this->_shouldLogWsdlRequest($observer)) {
+//			return;
+//		}
+
+		Mage::log("post yeppers", null, 'oi_api.log');
+
+		$response  = $observer->getControllerAction()->getResponse();
+		/* @var $response Mage_Core_Controller_Response_Http */
+		Mage::helper('n98_apilogger')->log(
+			array(
+				'body'             => $response->getBody(),
+				'direction'        => N98_ApiLogger_Model_Log::DIRECTION_OUT,
+				'api_adapter'      => 'xmlrpc',
+				'http_status_code' => $response->getHttpResponseCode(),
+				'http_method'      => '',
+			)
+		);
+	}
 
     /**
      * @param Varien_Event_Observer $observer

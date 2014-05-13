@@ -40,4 +40,34 @@ class N98_ApiLogger_Model_Config extends Mage_Core_Model_Abstract
     {
         return Mage::getStoreConfigFlag(self::XML_PATH_SOAP_WSDL_ACTIVE);
     }
+
+// TODO:
+//    /**
+//     * Check default value
+//     *
+//     * @test
+//     */
+//    public function isXmlprcLogActiveDefault()
+//    {
+//        $this->assertFalse($this->model->isXmlrpcLogActive());
+//    }
+//
+//    /**
+//     * @test
+//     * @loadFixture
+//     */
+//    public function isXmlrpcLogActiveYes()
+//    {
+//        $this->assertTrue($this->model->isXmlrpcLogActive());
+//    }
+//
+//    /**
+//     * @test
+//     * @loadFixture
+//     */
+//    public function isXmlrpcLogActiveNo()
+//    {
+//        $this->assertFalse($this->model->isXmlrpcLogActive());
+//    }
+
 }
